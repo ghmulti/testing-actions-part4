@@ -23,7 +23,7 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    output:
+    outputs:
       docker-image-tag: ${{ steps.output-step-id.outputs.short_sha }}
     steps:
       - name: Get code
