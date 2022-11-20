@@ -57,6 +57,6 @@ jobs:
       - name: Print files
         run: ls -la .
       - name: Pring output
-        run: echo "Docker image tag from build step: ${{ needs.build.outputs.docker-image-tag }}"
+        run: echo "Docker image tag from build step ${{ needs.build.outputs.docker-image-tag }}"
       - name: Deploy
         run: echo "Deploying..."
