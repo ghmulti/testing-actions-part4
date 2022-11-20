@@ -49,5 +49,7 @@ jobs:
         with:
           name: dist
           path: dist/
+      - name: Print files
+        run: ls -la .
       - name: Deploy
         run: echo "Deploying..."
