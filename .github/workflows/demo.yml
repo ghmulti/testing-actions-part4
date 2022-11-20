@@ -24,7 +24,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      docker-image-tag: ${{ steps.output-step-id.outputs.short_sha }}
+      docker-image-tag: ${{ steps.output-step-id.outputs.sha_short }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
