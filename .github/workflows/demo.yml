@@ -23,6 +23,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    output:
+      docker-image-tag: ${{ steps.output-step-id.outputs.short_sha }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -40,6 +42,9 @@ jobs:
         with:
           name: dist
           path: dist/
+      - name: Set outputs
+        id: output-step-id
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -51,5 +56,7 @@ jobs:
           path: dist/
       - name: Print files
         run: ls -la .
+      - name: Pring output
+        run: echo "Docker image tag from build step: ${{ needs.build.outputs.docker-image-tag }}"
       - name: Deploy
         run: echo "Deploying..."
